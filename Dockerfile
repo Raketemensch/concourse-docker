@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && apt-get -y install iproute2 ca-certificates
+RUN echo "nameserver 172.22.233.50" > /etc/resolv.conf;
 
 ADD bin/dumb-init /usr/local/bin
 ADD bin/concourse /usr/local/bin
