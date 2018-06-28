@@ -10,8 +10,10 @@ services:
     - PGDATA=/database
 
   concourse-web:
-    dns:
-    - 172.22.233.50
+    #dns:
+    #- 172.22.233.50
+    extra_hosts:
+      - "code.espn.com:172.22.215.171"
     image: concourse/concourse
     command: web
     links: [concourse-db]
@@ -24,13 +26,14 @@ services:
     - CONCOURSE_POSTGRES_PASSWORD=concourse_pass
     - CONCOURSE_POSTGRES_DATABASE=concourse
     - CONCOURSE_EXTERNAL_URL
-    - CONCOURSE_BASIC_AUTH_USERNAME=concourse
+    - CONCOURSE_BASIC_AUTH_USERNAME=espnautomation
     - CONCOURSE_BASIC_AUTH_PASSWORD=Espn123!
-    - CONCOURSE_NO_REALLY_I_DONT_WANT_ANY_AUTH
 
   concourse-worker:
-    dns:
-    - 172.22.233.50
+    #dns:
+    #- 172.22.233.50
+    extra_hosts:
+      - "code.espn.com:172.22.215.171"
     image: concourse/concourse
     command: worker
     privileged: true
