@@ -10,11 +10,7 @@ services:
     - PGDATA=/database
 
   concourse-web:
-    dns: 172.22.233.50
-    #dns:
-    #- 172.22.233.50
     extra_hosts:
-      - "code.espn.com:172.22.215.171"
       - "ivy.corp.espn.pvt:172.22.232.225"      
     image: concourse/concourse
     command: web
@@ -32,9 +28,7 @@ services:
     - CONCOURSE_BASIC_AUTH_PASSWORD=Espn123!
 
   concourse-worker:
-    dns: 172.22.233.50
     extra_hosts:
-      - "code.espn.com:172.22.215.171"
       - "ivy.corp.espn.pvt:172.22.232.225"      
     image: concourse/concourse
     command: worker
